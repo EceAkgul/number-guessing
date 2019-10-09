@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sayı Tahmin Oyunu</title>
+</head>
+<body>
+    <div>
+        <h1>Sayı Tahmin Oyunu</h1>
+        <p>Bilgisayar senden rastgele seçilmiş bir sayıyı tahmin etmeni isteyecek.</p>
+        <p>Üç cevap hakkın var</p>
+        <p id="oyun"><a href="#">Oyna!</a></p>
+     </div>
+
+     <script>
+     
+     var oyun=document.querySelector("#oyun");
+
+
+    oyun.addEventListener("click", function(){
+
+        var kontrol=confirm("Oynamak istediğine emin misin?");
+        
+        if (kontrol==1){
+            var tahmin=prompt("1 ile 10 arasında 1 sayı seç:");
+        
+            if (isNaN(tahmin))
+        {
+            alert("Bu bir sayı değil. Görüşürüz")
+        }else if (tahmin<1||tahmin>10){
+
+            alert ("sayı 1 ile 10 arasında olmalıydı. Görüşürüz!");
+        }else{
+            var sayi=1+Math.floor(Math.random()*10);
+            cevapHakki(tahmin,sayi);
+        }} 
+        else{
+            alert("Tamam o zaman. Görüşürüz!")
+        }
+        function cevapHakki(t,s){
+            for(i=1;i<4;i++){
+                if(t==s){
+                    alert("Bildin!" +s + ",");
+                    return;
+                }else if(i==3){
+                    alert("Maalesef tahmin hakkın bitti. Doğru cevap " + s  );
+
+                }else if(t<s){
+                    t=prompt("Arttırman lazım!");
+                }else {
+                    t=prompt("Azaltman lazım!");
+                }
+            }
+        }
+    
+     
+    });
+     
+     
+     
+     </script>
+    
+</body>
+</html>
